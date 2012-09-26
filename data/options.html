@@ -1,32 +1,33 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/options.css" />
-    </head>
-    <body>
+  <head>
+    <meta charset="utf-8">
+    <title>Snippet Switcher Options</title>
+    <link rel="stylesheet" type="text/css" href="options.css">
+  </head>
+  <body>
+    <form id="switcher-options-form">
+      <formset>
+        <legend>about:home Snippet Switcher</legend>
+        <ul></ul>
+      </formset>
+    </form>
 
-        <form id="option_controls">
-            <fieldset><legend>about:home snippets service</legend>
-                <ul class="url_fields">
-                    <li class="template field">
-                        <label>Label</label>
-                        <input type="text" name="sample" size="40" />
-                    </li>
-                </ul>
-                <!--
-                <ul class="presets_field">
-                    <li class="field">
-                        <label>Presets</label>
-                        <select name="presets"> </select>
-                    </li>
-                </ul>
-                -->
-                <div class="submit">
-                    <button class="change">Change update URL</button>
-                    <button class="restore">Restore defaults</button>
-                    <button class="open">Open about:home</button>
-                </div>
-            </fieldset>
-        </form>
-
-    </body>
+    <script id="option_list" type="text/html">
+      <li class="field">
+        <label for="id_SERVER">Server</label>
+        <select id="id_SERVER" name="SERVER">
+          <% _(servers).each(function(url, name) { %>
+            <option value="<%= url %>"><%= name %></option>
+          <% }); %>
+        </select>
+      </li>
+      <% _(options).each(function(name, key) { %>
+        <li class="field">
+          <label for="id_<%= key %>"><%= name %></label>
+          <input id="id_<%= key %>" name="<%= key %>" type="text">
+        </li>
+      <% }); %>
+    </script>
+  </body>
 </html>
