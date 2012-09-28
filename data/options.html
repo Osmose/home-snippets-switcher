@@ -10,6 +10,7 @@
       <formset>
         <legend>about:home Snippet Switcher</legend>
         <ul></ul>
+        <button type="submit">Save</button>
       </formset>
     </form>
 
@@ -22,10 +23,10 @@
           <% }); %>
         </select>
       </li>
-      <% _(options).each(function(name, key) { %>
+      <% _(options).each(function(option, key) { %>
         <li class="field">
-          <label for="id_<%= key %>"><%= name %></label>
-          <input id="id_<%= key %>" name="<%= key %>" type="text">
+          <label for="id_<%= key %>"><%= option.name %></label>
+          <input type="text" id="id_<%= key %>" name="<%= key %>" placeholder="<%= option.default_value %>">
         </li>
       <% }); %>
     </script>
